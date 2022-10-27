@@ -16,13 +16,13 @@
 
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="36"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="30" />
             <RowDefinition Height="30"/>
             <RowDefinition Height="40"/>
             <RowDefinition Height="30"/>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="40"/>
             <RowDefinition Height="20"/>
             <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
@@ -51,7 +51,7 @@
             Grid.Column="1"
             Grid.Row="1"
             Grid.ColumnSpan="2"
-            Grid.RowSpan="2" Margin="55,0,0,0"/>
+            Grid.RowSpan="2" HorizontalAlignment="Center"/>
         <Label
             FontSize="13"
             Content="Username:"
@@ -67,7 +67,7 @@
        
         <Label
             FontSize="13"
-            Content="Countrie:"
+            Content="Country:"
             Grid.Column="1"
             Grid.Row="5" Foreground="MediumSlateBlue" FontWeight="Bold" HorizontalAlignment="Left" VerticalContentAlignment="Bottom"
              Margin="5,0,0,0"/>
@@ -75,7 +75,7 @@
                 x:Name="txtRusername" 
                 Grid.Column="1" 
                 Grid.Row="4" 
-                Margin="0,5,0,5"
+                Margin="0,0,0,5"
                 FontSize="13"
                 Width="200"
                 Height="30"
@@ -96,7 +96,7 @@
                 x:Name="txtRPassword" 
                 Grid.Column="2" 
                 Grid.Row="4" 
-                Margin="0,5,0,5"
+                Margin="0,0,0,5"
                 FontSize="13"
                 Width="200"
                 Height="30"
@@ -120,12 +120,13 @@
                 Grid.Column="2"
                 Content="Register me! 👍"
                 FontSize="15"
-                Margin="35,7,35,7" 
+                Margin="35,0,35,7" 
                 Background="MediumSlateBlue" 
                 BorderBrush="#FF9C9C9C" 
                 Width="130"
+                Height="30"
                 Foreground="White" 
-                Opacity="0.7" Click="btnRegister_Click">
+                Click="btnRegister_Click">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -140,9 +141,9 @@
                 Grid.Column="1"
                 Grid.Row="6"
                 Width="200"
-                Height="30"
+                Height="25"
                 Opacity="0.6"
-                Margin="0,5,0,5" SelectionChanged="cbRCountries_SelectionChanged"
+                Margin="0,0,0,10" SelectionChanged="cbRCountries_SelectionChanged"
                 VerticalAlignment="Stretch" 
                 VerticalContentAlignment="Center">
             <ComboBox.Resources>

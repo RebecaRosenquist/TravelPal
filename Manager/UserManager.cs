@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using TravelPal.Users;
 
 namespace TravelPal.Manager
@@ -24,6 +25,7 @@ namespace TravelPal.Manager
             }
             else
             {
+                MessageBox.Show("Oh no, the username is alredy taken. Please try again! ♡", "Username taken", MessageBoxButton.OK, MessageBoxImage.Information);
                 return false;
             }
 

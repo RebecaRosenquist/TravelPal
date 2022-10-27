@@ -43,6 +43,8 @@ namespace TravelPal
                 if(userManager.signInUser(txtUsername.Text, txtPassword.Text))
                 {
                     new TravelsWindow().Show();
+                    txtPassword.Clear();
+                    txtUsername.Clear();
                     this.Hide();
                 }
                 //Om användarnamnet eller lösenordet blev false i signInUser

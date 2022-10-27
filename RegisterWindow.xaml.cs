@@ -35,14 +35,14 @@ namespace TravelPal
             cbRCountries.ItemsSource = countries;
         }
 
-        private void txtRusername_TextChanged(object sender, TextChangedEventArgs e)
+        public void txtRusername_TextChanged(object sender, TextChangedEventArgs e)
         {
-            //    string userName = txtRusername.Text;
+           
         }
 
-        private void txtPassword_TextChanged(object sender, TextChangedEventArgs e)
+        public void txtPassword_TextChanged(object sender, TextChangedEventArgs e)
         {
-                //    string passwordBox = txtRPassword.Text;
+               
         }
 
         private void cbRCountries_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -50,20 +50,30 @@ namespace TravelPal
 
         }
 
-        private void btnRegister_Click(object sender, RoutedEventArgs e)
+        public void btnRegister_Click(object sender, RoutedEventArgs e)
         {
             //Lägger in UI:s värde i variablar
             string rUsername = txtRusername.Text;
             string rPassword = txtRPassword.Text;
             Countries rCountry = (Countries)Enum.Parse(typeof(Countries), cbRCountries.SelectedItem.ToString());
 
+            if(rUsername.Length >2 && rUsername.Length <20 && rPassword.Length >4 && rPassword.Length <20)
+            { 
+                User user = new();
+                user.IUser(rUsername, rPassword, rCountry);
+                userManager.addUser(user);
 
-            User user = new();
-            user.IUser(rUsername, rPassword, rCountry);
-            userManager.addUser(user);
+                ((MainWindow)Application.Current.MainWindow).Show();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Register demand:\n❀ The username most contains minimum 3 caracters \n❀ The password most contains minimum 5 caracters \n❀ Maximum caracters allowed on username or password is 20", "Registrering failed", MessageBoxButton.OK, MessageBoxImage.Error);
+                txtRPassword.Clear();
+                txtRusername.Clear();
+            }
 
-            ((MainWindow)Application.Current.MainWindow).Show();
-            this.Close();
+           
 
 
         }
