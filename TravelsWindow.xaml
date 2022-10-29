@@ -88,7 +88,7 @@
                 BorderBrush="#FF9C9C9C" 
                 Width="130"
             Height="27"
-                Foreground="White" 
+                Foreground="White" Click="btnAddTravel_Click" 
                 >
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
@@ -212,6 +212,7 @@
 
 
         <ListView
+            Name="lvTravelList"
             Grid.Row="5"
             Grid.Column="1"
             Grid.ColumnSpan="2"
@@ -222,7 +223,7 @@
             Margin="40,0,0,0"
             Background="MintCream"
             BorderBrush="Gray"
-            Opacity="0.9"
+            Opacity="0.9" 
               
             >
 

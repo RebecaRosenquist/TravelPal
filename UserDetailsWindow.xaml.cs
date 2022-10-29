@@ -32,9 +32,10 @@ namespace TravelPal
 
         private void btnCansel_Click(object sender, RoutedEventArgs e)
         {
+
             //Kolla upp hur detta fungerar 
-            ((TravelsWindow)Application.Current.TravelsWindow).Show();
-            this.Close();
+            //((TravelsWindow)Application.Current.TravelsWindow).Show();
+            //this.Close();
 
         }
     }

@@ -10,7 +10,7 @@ namespace TravelPal.Users
 {
     public class User : IUser
     {
-        public List<Travel> travels { get; set; }
+        public List<Travel> travels { get; set; } = new();
         public string UserName { get; set; }
         public string Password { get; set; }
 
@@ -21,6 +21,11 @@ namespace TravelPal.Users
             UserName = username;
             Password = password;
             Location = location;
+        }
+
+        public List<Travel> GetTravels()
+        {
+            return travels;
         }
     }
 

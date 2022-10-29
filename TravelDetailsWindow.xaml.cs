@@ -23,5 +23,12 @@ namespace TravelPal
         {
             InitializeComponent();
         }
+
+        private void btnCansel_Click(object sender, RoutedEventArgs e)
+        {
+            
+            //new TravelsWindow().Show();
+            //this.Close();
+        }
     }
 }

@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TravelPal.Enums;
 using TravelPal.Manager;
+using TravelPal.Users;
 
 namespace TravelPal
 {
@@ -23,11 +24,24 @@ namespace TravelPal
     public partial class MainWindow : Window
     {
         UserManager userManager = new();
+        TravelManager travelManager = new();
       
         public MainWindow()
         {
             InitializeComponent();
-           
+
+            Admin admin = new(travelManager);
+            admin.IUser("admin", "password", Countries.Afghanistan);
+            userManager.addUser(admin);
+
+            User user = new();
+            user.IUser("Gandalf", "password", Countries.Bahamas);
+            userManager.addUser(user);
+
+            User user1 = new();
+            user1.IUser("asd", "asd", Countries.Bahamas);
+            userManager.addUser(user1);
+
         }
 
         private void btnSingIn_Click(object sender, RoutedEventArgs e)
@@ -42,7 +56,7 @@ namespace TravelPal
                 //Användarnamnet och lösenordet är kontrollerat i metoden signInUser och om det är true så
                 if(userManager.signInUser(txtUsername.Text, txtPassword.Text))
                 {
-                    new TravelsWindow().Show();
+                    new TravelsWindow(userManager, travelManager).Show();
                     txtPassword.Clear();
                     txtUsername.Clear();
                     this.Hide();

@@ -64,6 +64,7 @@ namespace TravelPal.Manager
             {
                 if(username == useriListan.UserName && password == useriListan.Password)
                 {
+                    signedInUser = useriListan;
                     return true;
                 }
             }
