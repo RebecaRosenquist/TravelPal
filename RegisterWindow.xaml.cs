@@ -60,34 +60,45 @@ namespace TravelPal
 
             string rCPassword = txtRCpassword.Text;
             //Countries rCountry = (Countries)Enum.Parse(typeof(Countries), rCountryString);
-
-            Countries rCountry = (Countries)Enum.Parse(typeof(Countries),cbRCountries.Text);
-
-            if(cbRCountries.Text == "" || txtRusername.Text == "" || txtRPassword.Text == "" || txtRCpassword.Text == "")
+            if (cbRCountries.SelectedItem != null)
             {
-                MessageBox.Show("All fields are not fieled in", "Registrering failed", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-            else if(txtRPassword.Text != txtRCpassword.Text)
-            {
-                MessageBox.Show("The passwords do not match", "Registrering failed", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-            else if(rUsername.Length >2 && rUsername.Length <20 && rPassword.Length >4 && rPassword.Length <20)
-            { 
-                User user = new();
-                user.IUser(rUsername, rPassword, rCountry);
-                userManager.addUser(user);
+                
+           
+                Countries rCountry = (Countries)Enum.Parse(typeof(Countries), cbRCountries.Text);
+                if (txtRusername.Text == "" || txtRPassword.Text == "" || txtRCpassword.Text == "")
+                {
+                    MessageBox.Show("All fields are not fieled in", "Registrering failed", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                else if (txtRPassword.Text != txtRCpassword.Text)
+                {
+                    MessageBox.Show("The passwords do not match", "Registrering failed", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                else if (rUsername.Length > 2 && rUsername.Length < 20 && rPassword.Length > 4 && rPassword.Length < 20)
+                {
+                    User user = new();
+                    user.IUser(rUsername, rPassword, rCountry);
+                    userManager.addUser(user);
 
-                ((MainWindow)Application.Current.MainWindow).Show();
-                this.Close();
+                    ((MainWindow)Application.Current.MainWindow).Show();
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Register demand:\n❀ The username most contains minimum 3 caracters \n❀ The password most contains minimum 5 caracters \n❀ Maximum caracters allowed on username or password is 20", "Registrering failed", MessageBoxButton.OK, MessageBoxImage.Error);
+                    txtRPassword.Clear();
+                    txtRusername.Clear();
+                }
             }
             else
             {
-                MessageBox.Show("Register demand:\n❀ The username most contains minimum 3 caracters \n❀ The password most contains minimum 5 caracters \n❀ Maximum caracters allowed on username or password is 20", "Registrering failed", MessageBoxButton.OK, MessageBoxImage.Error);
-                txtRPassword.Clear();
-                txtRusername.Clear();
+                    MessageBox.Show("You most choose a Country", "Registrering failed", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+           
 
-            
+
+
+
+
 
         }
     }

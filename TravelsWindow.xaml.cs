@@ -84,7 +84,7 @@ namespace TravelPal
             AddTravelWindow travelWindow = new(userManager, travelManager, currentUser);
             travelWindow.Owner = this;
             travelWindow.Show();    
-            this.Hide();
+            
         }
 
         private void RemoveTravel_Click(object sender, RoutedEventArgs e)

@@ -56,6 +56,8 @@ namespace TravelPal
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
+
+
             Countries country = (Countries)Enum.Parse(typeof(Countries), cbxCountry.Text.ToString());
             string destination = txtDestination.Text;
             int travlers = Convert.ToInt32(txtTravlers.Text);
@@ -109,6 +111,9 @@ namespace TravelPal
                 chbAllInclusive.Visibility = Visibility.Hidden;
 
             }
+
+
         }
+
     }
 }
