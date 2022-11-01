@@ -11,11 +11,13 @@ namespace TravelPal.Manager
     {
         public List<Travel> Travels { get; set; } = new();
 
+        //Informationen från den nya resan läggs till i travel-listan kopplad till specifik user
         public void AddTravel(Travel travel)
         {
             Travels.Add(travel);
         }
 
+        //Tar bort en resa ifrån listan Travels
         public void RemoveTravel(Travel travel)
         {
             Travels.Remove(travel);

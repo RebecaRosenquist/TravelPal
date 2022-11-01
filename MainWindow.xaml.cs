@@ -49,7 +49,11 @@ namespace TravelPal
             //Kontrollerar om det finns någon text inskriven i rutorna för användarnamn och lösenord
             if(txtUsername.Text == "" && txtPassword.Text == "")
             {
-                MessageBox.Show("Some field/fields are empty.", "Logging in failed", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("The fields are empty.", "Logging in failed", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else if(txtUsername.Text == "" || txtPassword.Text == "")
+            {
+                MessageBox.Show("One field are empty.", "Logging in failed", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else
             {

@@ -15,7 +15,7 @@ namespace TravelPal.Users
         public Countries Location { get; set; }
 
         public void IUser(string username, string password, Countries location);
-        public List<Travel> GetTravels();
+        //public List<Travel> GetTravels();
 
     }
 

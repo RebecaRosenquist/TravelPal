@@ -14,7 +14,7 @@ namespace TravelPal.Manager
         public IUser signedInUser { get; set; }
        
 
-
+        //Om användarnamn+lösen uppfyller kraven läggs usern till i listan users
         public bool addUser(IUser user)
         {
             //Lägg till använndare i listan
@@ -31,20 +31,18 @@ namespace TravelPal.Manager
 
         }
 
-        public void removeUser(IUser user)
-        {
-        //Ta bort användare från listan
-        }
+        
 
         public bool updateUser(IUser user, string newName)
         {
         //Uppdatera användare i listan
             return true;
         }
-
+        
+        //Kontrollera om användarnamn är tillgängligt
         private bool validateUsername(string newName)
         {
-        //Kontrollera om användarnamn är tillgängligt
+        
             foreach (IUser user in users)
             {
                 if(user.UserName == newName)
@@ -56,10 +54,11 @@ namespace TravelPal.Manager
             return true;
         }
 
-        public bool signInUser(string username, string password)
-        {
         //Kontrollera om användarnamn och lösenord är en inlagd användare och isåfall logga in personen->skicka till travelwindow
        //Om inte felmeddelande, cleara och be användaren skriva in uppgifter på nytt
+        public bool signInUser(string username, string password)
+        {
+        
             foreach(IUser useriListan in users)
             {
                 if(username == useriListan.UserName && password == useriListan.Password)

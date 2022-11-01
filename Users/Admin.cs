@@ -17,11 +17,12 @@ namespace TravelPal.Users
         public Countries Location { get; set; }
         public TravelManager travelManager { get; set; }
 
-        public Admin(TravelManager tManager)
-        {
-            travelManager = tManager;
-        }
+        //public Admin(TravelManager tManager)
+        //{
+        //    travelManager = tManager;
+        //}
 
+        //
         public void IUser(string username, string password, Countries location)
         {
             UserName = username;
@@ -29,6 +30,7 @@ namespace TravelPal.Users
             Location = location;
         }
 
+        // 
         public List<Travel> GetTravels()
         {
             return travelManager.Travels;

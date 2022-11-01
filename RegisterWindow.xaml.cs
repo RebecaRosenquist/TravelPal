@@ -55,9 +55,20 @@ namespace TravelPal
             //Lägger in UI:s värde i variablar
             string rUsername = txtRusername.Text;
             string rPassword = txtRPassword.Text;
-            Countries rCountry = (Countries)Enum.Parse(typeof(Countries), cbRCountries.SelectedItem.ToString());
+            string rCountryString = cbRCountries.SelectedItem as string;
+            string rCPassword = txtRCpassword.Text;
+            Countries rCountry = (Countries)Enum.Parse(typeof(Countries), rCountryString);
+            //Countries rCountry = (Countries)Enum.Parse(typeof(Countries), cbRCountries.SelectedItem.ToString());
 
-            if(rUsername.Length >2 && rUsername.Length <20 && rPassword.Length >4 && rPassword.Length <20)
+            if(cbRCountries.SelectedItem == null || txtRusername.Text == "" || txtRPassword.Text == "" || txtRCpassword.Text == "")
+            {
+                MessageBox.Show("All fields are not fieled in", "Registrering failed", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else if(txtRPassword.Text != txtRCpassword.Text)
+            {
+                MessageBox.Show("The passwords do not match", "Registrering failed", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else if(rUsername.Length >2 && rUsername.Length <20 && rPassword.Length >4 && rPassword.Length <20)
             { 
                 User user = new();
                 user.IUser(rUsername, rPassword, rCountry);

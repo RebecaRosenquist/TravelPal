@@ -22,7 +22,7 @@ namespace TravelPal
     /// </summary>
     public partial class TravelsWindow : Window
     {
-        //Rad 23-32 lägger till listan som finns i TM i detta fönster så vi kommer åt den även här
+        //note to myself: Rad 23-32 lägger till listan som finns i TM i detta fönster så vi kommer åt den även här
         //Listan är ej kopierad utan den är direktkopplad till originalet 
 
         UserManager userManager;
@@ -39,9 +39,11 @@ namespace TravelPal
             UpdateTravelList();
 
         }
-
+        
+        //En metod som uppdaterar travellisten efter att en resa lagts till
         public void UpdateTravelList()
         {
+            
             lvTravelList.Items.Clear();
             foreach(Travel travel in currentUser.GetTravels())
             {
@@ -54,24 +56,29 @@ namespace TravelPal
             
         }
 
+        //Infoknapp som visar en messagebox med kosrtfattad info kring hur man använder TravelPal 
         private void btnAppInfo_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Welcome to TravelPal, here you can:\n❀ CLick on » Add Traval «  to add a vacation or trip\n❀ Mark one of your travels and click on » Details « to show details of the specific travel\n❀ Mark one off your specific travel an click on » Remove « to unbook it", "Information how to use TravelPal", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show("Welcome to TravelPal, here you can:\n❀ Click on » Add Traval «  to add a vacation or trip\n❀ Mark one of your travels and click on » Details « to show details of the specific travel\n❀ Mark one off your specific travel an click on » Remove « to unbook it", "How to - TravelPal", MessageBoxButton.OK, MessageBoxImage.Information);
              
         }
 
+        //Sign outknapp som loggar ut användaren och tar den till mainwindow igen
         private void btnSignOut_Click(object sender, RoutedEventArgs e)
         {
             ((MainWindow)Application.Current.MainWindow).Show();
             this.Close();
         }
 
+        //Knapp som öppnar upp fönster UserDetailsWindow
         private void btnUserDetails_Click(object sender, RoutedEventArgs e)
         {
             new UserDetailsWindow().Show();
             this.Hide();
-        }
 
+        } 
+
+        //Knapp som sparar informationen som usern fylllt i, i AddTravelWindow. Knapptryck genererar att resan sparas på userns inlogg samt öppnar upp travelwindow på nytt
         private void btnAddTravel_Click(object sender, RoutedEventArgs e)
         {
             AddTravelWindow travelWindow = new(userManager, travelManager, currentUser);

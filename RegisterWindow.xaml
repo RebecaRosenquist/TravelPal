@@ -23,7 +23,7 @@
             <RowDefinition Height="40"/>
             <RowDefinition Height="30"/>
             <RowDefinition Height="40"/>
-            <RowDefinition Height="20"/>
+            <RowDefinition Height="40"/>
             <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
 
@@ -64,7 +64,13 @@
             Grid.Column="2"
             Grid.Row="3" Foreground="MediumSlateBlue" FontWeight="Bold" 
             Margin="5,0,0,0"/>
-       
+        <Label
+            FontSize="13"
+            Content="Confirme password:"
+            Grid.Column="2"
+            Grid.Row="5" Foreground="MediumSlateBlue" FontWeight="Bold" 
+            Margin="5,0,0,0"/>
+
         <Label
             FontSize="13"
             Content="Country:"
@@ -75,6 +81,25 @@
                 x:Name="txtRusername" 
                 Grid.Column="1" 
                 Grid.Row="4" 
+                Margin="0,0,0,5"
+                FontSize="13"
+                Width="200"
+                Height="30"
+                VerticalAlignment="Stretch" 
+                VerticalContentAlignment="Center"
+                Foreground="#FF3A3A3A"
+                Opacity="0.6" TextChanged="txtRusername_TextChanged" >
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+
+        <TextBox
+                x:Name="txtRCpassword" 
+                Grid.Column="2" 
+                Grid.Row="6" 
                 Margin="0,0,0,5"
                 FontSize="13"
                 Width="200"
@@ -116,11 +141,11 @@
 
         <Button
                 Name="btnRegister"
-                Grid.Row="6"
+                Grid.Row="7"
                 Grid.Column="2"
                 Content="Register me! 👍"
                 FontSize="15"
-                Margin="35,0,35,7" 
+                Margin="35,5,35,0" 
                 Background="MediumSlateBlue" 
                 BorderBrush="#FF9C9C9C" 
                 Width="130"
