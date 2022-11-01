@@ -37,6 +37,8 @@ namespace TravelPal
             travelManager = tManager;
             userManager = uManager;
 
+
+            
         }
 
         private void FeedComoBoxes()

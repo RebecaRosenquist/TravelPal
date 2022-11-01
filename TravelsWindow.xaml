@@ -109,7 +109,7 @@
                 BorderBrush="#FF9C9C9C" 
                 Width="130"
                 
-                Foreground="White" 
+                Foreground="White" Click="btnTravelDetails_Click" 
                 >
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
@@ -129,7 +129,7 @@
                 Background="MediumSlateBlue" 
                 BorderBrush="#FF9C9C9C" 
                 Width="130"
-                Foreground="White">
+                Foreground="White" Click="RemoveTravel_Click">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>

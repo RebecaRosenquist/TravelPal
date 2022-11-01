@@ -58,7 +58,7 @@ namespace TravelPal
             else
             {
                 //Användarnamnet och lösenordet är kontrollerat i metoden signInUser och om det är true så
-                if(userManager.signInUser(txtUsername.Text, txtPassword.Text))
+                if(userManager.SignInUser(txtUsername.Text, txtPassword.Text))
                 {
                     new TravelsWindow(userManager, travelManager).Show();
                     txtPassword.Clear();

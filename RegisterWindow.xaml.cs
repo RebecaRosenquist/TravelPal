@@ -28,6 +28,7 @@ namespace TravelPal
             InitializeComponent();
             userManager = uManager;
 
+          
             //skapar alla länder
             string[] countries = Enum.GetNames(typeof(Countries));
 
@@ -55,12 +56,14 @@ namespace TravelPal
             //Lägger in UI:s värde i variablar
             string rUsername = txtRusername.Text;
             string rPassword = txtRPassword.Text;
-            string rCountryString = cbRCountries.SelectedItem as string;
-            string rCPassword = txtRCpassword.Text;
-            Countries rCountry = (Countries)Enum.Parse(typeof(Countries), rCountryString);
-            //Countries rCountry = (Countries)Enum.Parse(typeof(Countries), cbRCountries.SelectedItem.ToString());
+            //string rCountryString = cbRCountries.SelectedItem as string;
 
-            if(cbRCountries.SelectedItem == null || txtRusername.Text == "" || txtRPassword.Text == "" || txtRCpassword.Text == "")
+            string rCPassword = txtRCpassword.Text;
+            //Countries rCountry = (Countries)Enum.Parse(typeof(Countries), rCountryString);
+
+            Countries rCountry = (Countries)Enum.Parse(typeof(Countries),cbRCountries.Text);
+
+            if(cbRCountries.Text == "" || txtRusername.Text == "" || txtRPassword.Text == "" || txtRCpassword.Text == "")
             {
                 MessageBox.Show("All fields are not fieled in", "Registrering failed", MessageBoxButton.OK, MessageBoxImage.Error);
             }
@@ -84,8 +87,7 @@ namespace TravelPal
                 txtRusername.Clear();
             }
 
-           
-
+            
 
         }
     }

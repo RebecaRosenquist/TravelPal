@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -11,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TravelPal.Travels;
 
 namespace TravelPal
 {
@@ -19,16 +21,59 @@ namespace TravelPal
     /// </summary>
     public partial class TravelDetailsWindow : Window
     {
-        public TravelDetailsWindow()
+
+        public TravelDetailsWindow(Travel selectedTravel)
         {
             InitializeComponent();
+
+            txtDestination.Text = selectedTravel.Destination;
+            txtCountry.Text = selectedTravel.Country.ToString();
+            txtTravlers.Text = selectedTravel.Travellers.ToString();
+            txtType.Text = selectedTravel.GetType().Name;
+            txtTripType.Text = selectedTravel.GetType().Name;
+            lblTripOrAllinclusive.Visibility = Visibility.Visible;
+
+
+
+            if (selectedTravel is Trip)
+            {
+                Trip trip = selectedTravel as Trip;
+
+
+                lblTripOrAllinclusive.Content = "Trip";
+                txtType.Visibility = Visibility.Visible;
+                chbAllinclusive.Visibility = Visibility.Hidden;
+                txtType.Text = trip.Type.ToString();
+                
+            }
+            else if (selectedTravel is Vacation)
+            {
+                Vacation vacation = selectedTravel as Vacation;
+
+                chbAllinclusive.Visibility = Visibility.Visible;
+                txtTripType.Visibility = Visibility.Hidden;
+                lblTripOrAllinclusive.Content = "Allinclusive";
+
+
+
+                if (vacation.IsAllInclusive)
+                {
+                    chbAllinclusive.IsChecked = true;
+                }
+                else
+                {
+                    chbAllinclusive.IsChecked = false;
+                }
+            }
+
         }
 
         private void btnCansel_Click(object sender, RoutedEventArgs e)
         {
-            
-            //new TravelsWindow().Show();
-            //this.Close();
+
+            this.Close();
         }
     }
 }
+
+      

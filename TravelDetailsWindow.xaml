@@ -74,6 +74,7 @@
             Grid.Row="5" Foreground="MediumSlateBlue" FontWeight="Bold" 
             Margin="5,0,0,0"/>
         <Label
+            Name="lblTravelType"
             FontSize="13"
             Content="Type:"
             Grid.Column="1"
@@ -81,8 +82,8 @@
              Margin="5,0,0,0"/>
 
 
-        <ComboBox
-                x:Name="cbxCountry" 
+        <TextBox
+                x:Name="txtCountry" 
                 Grid.Column="1" 
                 Grid.Row="4" 
                 Margin="0,0,0,5"
@@ -92,13 +93,15 @@
                 VerticalAlignment="Stretch" 
                 VerticalContentAlignment="Center"
                 Foreground="#FF3A3A3A"
-                Opacity="0.6"  >
-            <ComboBox.Resources>
+                Opacity="0.6"
+            IsHitTestVisible="False"
+            IsReadOnly="True" >
+            <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
                 </Style>
-            </ComboBox.Resources>
-        </ComboBox>
+            </TextBox.Resources>
+        </TextBox>
 
 
 
@@ -113,7 +116,8 @@
                 VerticalAlignment="Stretch" 
                 VerticalContentAlignment="Center"
                 Foreground="#FF3A3A3A"
-                Opacity="0.6"  >
+                Opacity="0.6" 
+                IsReadOnly="True">
 
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
@@ -132,7 +136,8 @@
                 VerticalAlignment="Stretch" 
                 VerticalContentAlignment="Center"
                 Foreground="#FF3A3A3A"
-                Opacity="0.6"  >
+                Opacity="0.6"
+            IsReadOnly="True">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -152,6 +157,7 @@
                     VerticalContentAlignment="Center"
                     Foreground="#FF3A3A3A"
                     Opacity="0.6"
+                    IsReadOnly="True"
                
                 >
 
@@ -183,8 +189,8 @@
             </Button.Resources>
         </Button>
 
-        <ComboBox
-                x:Name="cbxTripType" 
+        <TextBox
+                x:Name="txtTripType" 
                 Grid.Column="1" 
                 Grid.Row="8" 
                 Margin="0,0,0,14.98"
@@ -194,26 +200,36 @@
                 VerticalAlignment="Stretch" 
                 VerticalContentAlignment="Center"
                 Foreground="#FF3A3A3A"
-                Opacity="0.6"  >
-            <ComboBox.Resources>
+                Opacity="0.6" 
+                IsReadOnly="True"
+            IsHitTestVisible="False"
+                >
+            <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
                 </Style>
-            </ComboBox.Resources>
-        </ComboBox>
+            </TextBox.Resources>
+        </TextBox>
         <Label
-            Name="TripOrAllinclusive"
+            Name="lblTripOrAllinclusive"
             FontSize="13"
             Content="Trip /Allinclusive"
             Grid.Column="1"
             Grid.Row="7" Foreground="MediumSlateBlue" FontWeight="Bold" 
-            Margin="5,0,0,0"/>
+            Margin="5,0,0,0"
+            
+            
+           />
 
         <CheckBox
             x:Name="chbAllinclusive"
             Grid.Row="8"
             Grid.Column="1"
-            Margin="10,3,0,0"/>
+            Margin="10,3,0,0"
+            IsHitTestVisible="False"
+           
+            
+            />
 
 
 

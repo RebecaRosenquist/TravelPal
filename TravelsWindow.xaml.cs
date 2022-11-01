@@ -34,7 +34,7 @@ namespace TravelPal
             InitializeComponent();
             userManager = uManager;
             travelManager = tManager;
-            currentUser = userManager.signedInUser;
+            currentUser = userManager.SignedInUser;
 
             UpdateTravelList();
 
@@ -74,7 +74,7 @@ namespace TravelPal
         private void btnUserDetails_Click(object sender, RoutedEventArgs e)
         {
             new UserDetailsWindow().Show();
-            this.Hide();
+            
 
         } 
 
@@ -87,6 +87,29 @@ namespace TravelPal
             this.Hide();
         }
 
-       
+        private void RemoveTravel_Click(object sender, RoutedEventArgs e)
+        {
+            ListViewItem selectedItem = lvTravelList.SelectedItem as ListViewItem;
+
+            Travel selectedTravel = selectedItem.Tag as Travel;
+
+            travelManager.RemoveTravel(selectedTravel);
+
+            userManager.RemoveTravelFromUser(selectedTravel);
+
+            UpdateTravelList();
+        }
+
+        private void btnTravelDetails_Click(object sender, RoutedEventArgs e)
+        {
+
+            ListViewItem selectedItem = lvTravelList.SelectedItem as ListViewItem;
+
+            Travel selectedTravel = selectedItem.Tag as Travel;
+
+            new TravelDetailsWindow(selectedTravel).Show();
+
+
+        }
     }
 }
