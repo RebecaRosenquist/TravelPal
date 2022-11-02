@@ -34,10 +34,17 @@ namespace TravelPal.Manager
 
         
 
-        public bool updateUser(IUser user, string newName)
+        public bool updateUser(IUser user)
         {
-        //Uppdatera användare i listan
-            return true;
+            //Uppdatera användare i listan
+            if (validateUsername(user.UserName) || user.UserName == SignedInUser.UserName)
+            {
+                SignedInUser.UserName = user.UserName;
+                SignedInUser.Password = user.Password;
+                SignedInUser.Location = user.Location;
+                return true;
+            }
+            return false;
         }
         
         //Kontrollera om användarnamn är tillgängligt

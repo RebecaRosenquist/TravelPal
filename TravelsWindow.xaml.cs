@@ -35,7 +35,7 @@ namespace TravelPal
             userManager = uManager;
             travelManager = tManager;
             currentUser = userManager.SignedInUser;
-
+            UpdateUserNamePrint();
             UpdateTravelList();
 
         }
@@ -73,7 +73,7 @@ namespace TravelPal
         //Knapp som öppnar upp fönster UserDetailsWindow
         private void btnUserDetails_Click(object sender, RoutedEventArgs e)
         {
-            new UserDetailsWindow().Show();
+            new UserDetailsWindow(userManager, this).Show();
             
 
         } 
@@ -110,6 +110,11 @@ namespace TravelPal
             new TravelDetailsWindow(selectedTravel).Show();
 
 
+        }
+
+        public void UpdateUserNamePrint()
+        {
+            lblUsernamePrint.Content = $"{userManager.SignedInUser.UserName}";
         }
     }
 }

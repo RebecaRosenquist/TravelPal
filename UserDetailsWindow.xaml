@@ -78,12 +78,14 @@
             Grid.Row="5" Foreground="MediumSlateBlue" FontWeight="Bold" HorizontalAlignment="Left" VerticalContentAlignment="Bottom"
              Margin="5,0,0,0"/>
         <Label
+            Name="lblUsernamePrint"
             FontSize="17"
-            Content="Username"
+           
             Grid.Column="1"
             FontFamily="Bahnschrift Light"
             Grid.Row="2" Foreground="Black" FontWeight="Bold" HorizontalAlignment="Left" VerticalContentAlignment="Bottom"
-             Margin="5,0,0,0"/>
+             Margin="5,0,0,0"
+            />
 
         <TextBox
                 x:Name="txtUusername" 
@@ -157,7 +159,7 @@
                 BorderBrush="#FF9C9C9C" 
                 Width="80"
                 Height="30"
-                Foreground="White" 
+                Foreground="White" Click="btnSave_Click" 
                 >
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">

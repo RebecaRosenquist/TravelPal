@@ -106,6 +106,7 @@ namespace TravelPal
                 MessageBox.Show("All fields are not field in ", "Adding travel failed", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
+
             foreach (Window window in Application.Current.Windows)
             {
                 if (window.GetType().Name == "TravelsWindow")

@@ -58,6 +58,7 @@
             Grid.ColumnSpan="2"
             Grid.RowSpan="2" HorizontalAlignment="Center"/>
         <Label
+            Name="lblUsernamePrint"
             FontSize="14"
             FontFamily="Bahnschrift Light"
             Content="Username:"
