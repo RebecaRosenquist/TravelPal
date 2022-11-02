@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -56,27 +57,116 @@ namespace TravelPal
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-
-
-            Countries country = (Countries)Enum.Parse(typeof(Countries), cbxCountry.Text.ToString());
-            string destination = txtDestination.Text;
-            int travlers = Convert.ToInt32(txtTravlers.Text);
-
-            if (cbxType.SelectedItem.ToString() == "Vacation")
+            if (txtDestination.Text != "" && txtTravlers.Text != "" && cbxCountry.SelectedItem != null && cbxType.SelectedItem != null)
             {
-                bool isAllinclusive = (bool) chbAllInclusive.IsChecked;
-                Vacation vacation = new(isAllinclusive, destination, country, travlers);
-                travelManager.AddTravel(vacation);
-                currentUser.GetTravels().Add(vacation);
+                if(txtTravlers.Text.Length < 2)
+                {
+                    try
+                    {
+                        Countries country = (Countries)Enum.Parse(typeof(Countries), cbxCountry.Text.ToString());
+                        string destination = txtDestination.Text;
+                        int travlers = Convert.ToInt32(txtTravlers.Text);
+
+                        if (cbxType.SelectedItem.ToString() == "Vacation")
+                        {
+
+                            bool isAllinclusive = (bool)chbAllInclusive.IsChecked;
+                            Vacation vacation = new(isAllinclusive, destination, country, travlers);
+                            travelManager.AddTravel(vacation);
+                            currentUser.GetTravels().Add(vacation);
+                        }
+                        else
+                        {
+                            if (cbxTripType.SelectedItem != null)
+                            {
+                                TripTypes tripType = (TripTypes)Enum.Parse(typeof(TripTypes), cbxTripType.SelectedItem.ToString());
+                                Trip trip = new(tripType, destination, country, travlers);
+                                travelManager.AddTravel(trip);
+                                currentUser.GetTravels().Add(trip);
+                            }
+                            else
+                            {
+                                MessageBox.Show("All fields are net field in ", "Adding travel failed", MessageBoxButton.OK, MessageBoxImage.Error);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("You most fill in alla the fields \n The amount of travlers most be in numbers ONLY", "Adding travel failed", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Travels over 9 persons have to be booked through phone \n🕿 : 0708-143965   🕓 : Mon-Fri 8-20", "Travel info", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                
             }
             else
             {
-                TripTypes tripType = (TripTypes)Enum.Parse(typeof(TripTypes), cbxTripType.SelectedItem.ToString());
-                Trip trip = new(tripType, destination, country, travlers);
-                travelManager.AddTravel(trip);
-                currentUser.GetTravels().Add(trip);
+                MessageBox.Show("All fields are not field in ", "Adding travel failed", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            
+               
+
+                
+                   
+                //    {
+                //        MessageBox.Show("All fields are not fieled in ETT", "Registrering failed", MessageBoxButton.OK, MessageBoxImage.Error);
+                //    }
+                //}
+            //if(txtTravlers.Text.Length == 1)
+            //{ 
+            //    try
+            //    {
+            //            Countries country = (Countries)Enum.Parse(typeof(Countries), cbxCountry.Text.ToString());
+            //            string destination = txtDestination.Text;
+            //            int travlers = Convert.ToInt32(txtTravlers.Text);
+
+            //            if (cbxType.SelectedItem.ToString() == "Vacation")
+            //            {
+            //                try
+            //                {
+
+            //                    bool isAllinclusive = (bool)chbAllInclusive.IsChecked;
+            //                    Vacation vacation = new(isAllinclusive, destination, country, travlers);
+            //                    travelManager.AddTravel(vacation);
+            //                    currentUser.GetTravels().Add(vacation);
+            //                }
+            //                catch
+            //                {
+            //                MessageBox.Show("All fields are not fieled in ETT", "Registrering failed", MessageBoxButton.OK, MessageBoxImage.Error);
+            //                }
+
+            //            }
+            //            else
+            //            {
+            //                if((cbxTripType.SelectedItem != null))
+            //                {
+            //                    TripTypes tripType = (TripTypes)Enum.Parse(typeof(TripTypes), cbxTripType.SelectedItem.ToString());
+            //                    Trip trip = new(tripType, destination, country, travlers);
+            //                    travelManager.AddTravel(trip);
+            //                    currentUser.GetTravels().Add(trip);
+            //                }
+            //                else
+            //                {
+            //                    MessageBox.Show("All fields are not fieled in TVÅ", "Registrering failed", MessageBoxButton.OK, MessageBoxImage.Error);
+            //                }
+            //            }
+
+            //    }
+            //    catch
+            //    {
+            //        MessageBox.Show("All fields are not fieled in TRE" , "Registrering failed", MessageBoxButton.OK, MessageBoxImage.Error);
+            //    }
+
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Something is worng with the travel input. You have to fill in this box with only numbers and if you are more then 10 persons in your trips you have to call us.", "Registrering failed", MessageBoxButton.OK, MessageBoxImage.Error);
+            //}
+
+
+
+
 
             foreach (Window window in Application.Current.Windows)
             {
