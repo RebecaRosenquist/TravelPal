@@ -199,7 +199,7 @@
                 Opacity="0.6"
                 Margin="0,0,0,10" 
                 VerticalAlignment="Stretch" 
-                VerticalContentAlignment="Center" SelectionChanged="cbUcountries_SelectionChanged">
+                VerticalContentAlignment="Center" >
             <ComboBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>

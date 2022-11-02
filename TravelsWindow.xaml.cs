@@ -81,33 +81,52 @@ namespace TravelPal
         //Knapp som sparar informationen som usern fylllt i, i AddTravelWindow. Knapptryck genererar att resan sparas på userns inlogg samt öppnar upp travelwindow på nytt
         private void btnAddTravel_Click(object sender, RoutedEventArgs e)
         {
-            AddTravelWindow travelWindow = new(userManager, travelManager, currentUser);
-            travelWindow.Owner = this;
-            travelWindow.Show();    
+            
+            
+                AddTravelWindow travelWindow = new(userManager, travelManager, currentUser);
+                travelWindow.Owner = this;
+                travelWindow.Show(); 
+           
+            
             
         }
 
         private void RemoveTravel_Click(object sender, RoutedEventArgs e)
         {
-            ListViewItem selectedItem = lvTravelList.SelectedItem as ListViewItem;
+            if(lvTravelList.SelectedItem != null)
+            {
+                ListViewItem selectedItem = lvTravelList.SelectedItem as ListViewItem;
 
-            Travel selectedTravel = selectedItem.Tag as Travel;
+                Travel selectedTravel = selectedItem.Tag as Travel;
 
-            travelManager.RemoveTravel(selectedTravel);
+                travelManager.RemoveTravel(selectedTravel);
 
-            userManager.RemoveTravelFromUser(selectedTravel);
+                userManager.RemoveTravelFromUser(selectedTravel);
 
-            UpdateTravelList();
+                UpdateTravelList();
+            }
+            else
+            {
+                MessageBox.Show("You have to select the travel you want to remove from the list");
+            }
+
         }
 
         private void btnTravelDetails_Click(object sender, RoutedEventArgs e)
         {
+            if(lvTravelList.SelectedItem != null)
+            {
+                ListViewItem selectedItem = lvTravelList.SelectedItem as ListViewItem;
 
-            ListViewItem selectedItem = lvTravelList.SelectedItem as ListViewItem;
+                Travel selectedTravel = selectedItem.Tag as Travel;
 
-            Travel selectedTravel = selectedItem.Tag as Travel;
-
-            new TravelDetailsWindow(selectedTravel).Show();
+                new TravelDetailsWindow(selectedTravel).Show();
+            }
+            else
+            {
+                MessageBox.Show("You have to select the travel you want to se from the list");
+            }
+            
 
 
         }

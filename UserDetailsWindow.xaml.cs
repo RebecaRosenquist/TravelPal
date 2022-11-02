@@ -33,6 +33,7 @@ namespace TravelPal
             cbUcountries.ItemsSource = Enum.GetValues(typeof(Countries));
         }
 
+        //
         private void SetUserDetails()
         {
             txtUusername.Text = userManager.SignedInUser.UserName;
@@ -42,18 +43,13 @@ namespace TravelPal
             lblUsernamePrint.Content = userManager.SignedInUser.UserName;
         }
 
-        private void cbUcountries_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            //Skapa ny enum eller koppla samman med registerwindow?
-
-        }
+        
 
         private void btnCansel_Click(object sender, RoutedEventArgs e)
         {
 
-            //Kolla upp hur detta fungerar 
-            //((TravelsWindow)Application.Current.TravelsWindow).Show();
-            //this.Close();
+            
+            this.Close();
 
         }
 
