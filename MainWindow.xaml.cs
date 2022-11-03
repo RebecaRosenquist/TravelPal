@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TravelPal.Enums;
 using TravelPal.Manager;
+using TravelPal.Travels;
 using TravelPal.Users;
 
 namespace TravelPal
@@ -37,6 +38,9 @@ namespace TravelPal
             User user = new();
             user.IUser("Gandalf", "password", Countries.Bahamas);
             userManager.addUser(user);
+            Vacation vacation = new(true, "Växjö", Countries.Switzerland, 4);
+            user.travels.Add(vacation);
+            travelManager.AddTravel(vacation);
 
             User user1 = new();
             user1.IUser("asd", "asd", Countries.Bahamas);
