@@ -29,37 +29,23 @@ namespace TravelPal
             userManager = uManager;
 
           
-            //skapar alla länder
+         
             string[] countries = Enum.GetNames(typeof(Countries));
 
-            ////Lägger arrrayn med länder i ComboBoxen
+            
             cbRCountries.ItemsSource = countries;
         }
 
-        public void txtRusername_TextChanged(object sender, TextChangedEventArgs e)
-        {
-           
-        }
-
-        public void txtPassword_TextChanged(object sender, TextChangedEventArgs e)
-        {
-               
-        }
-
-        private void cbRCountries_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
+        //Registrerar användaren/lägger till i lista om den uppfyller villkoren
         public void btnRegister_Click(object sender, RoutedEventArgs e)
         {
-            //Lägger in UI:s värde i variablar
+       
             string rUsername = txtRusername.Text;
             string rPassword = txtRPassword.Text;
-            //string rCountryString = cbRCountries.SelectedItem as string;
+           
 
             string rCPassword = txtRCpassword.Text;
-            //Countries rCountry = (Countries)Enum.Parse(typeof(Countries), rCountryString);
+            
             if (cbRCountries.SelectedItem != null)
             {
                 
@@ -84,7 +70,7 @@ namespace TravelPal
                 }
                 else
                 {
-                    MessageBox.Show("Register demand:\n❀ The username most contains minimum 3 caracters \n❀ The password most contains minimum 5 caracters \n❀ Maximum caracters allowed on username or password is 20", "Registrering failed", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Register demand:\n✓ The username most contains minimum 3 caracters \n✓ The password most contains minimum 5 caracters \n✓ Maximum caracters allowed on username or password is 20", "Registrering failed", MessageBoxButton.OK, MessageBoxImage.Error);
                     txtRPassword.Clear();
                     txtRusername.Clear();
                 }

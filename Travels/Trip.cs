@@ -18,6 +18,7 @@ namespace TravelPal.Travels
 
         }
 
+        //Har inte haft användning av denna?
         public string GetInfo()
         {
             return "";

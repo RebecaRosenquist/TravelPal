@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -33,7 +34,7 @@ namespace TravelPal
             cbUcountries.ItemsSource = Enum.GetValues(typeof(Countries));
         }
 
-        //
+        //Lägger till de nya uppgifterna kopplat till den inloggade usern
         private void SetUserDetails()
         {
             txtUusername.Text = userManager.SignedInUser.UserName;
@@ -44,7 +45,7 @@ namespace TravelPal
         }
 
         
-
+        //Stänger förnstret
         private void btnCansel_Click(object sender, RoutedEventArgs e)
         {
 
@@ -53,6 +54,7 @@ namespace TravelPal
 
         }
 
+        //sparar de nya uppgifterna till usern och lägger till i listan 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
             string uUsername = txtUusername.Text;
@@ -75,15 +77,19 @@ namespace TravelPal
                 if (userManager.updateUser(user))
                 {
                     travelsWindow.UpdateUserNamePrint();
-                    MessageBox.Show("Changes saved! ❀");
+                    MessageBox.Show("Changes saved! ✓");
                 }
-                
 
+                else
+                {
+                    MessageBox.Show("Oh no, the username is alredy taken. Please try again! ♡", "Username taken", MessageBoxButton.OK);
+                }
                 this.Close();
             }
             else
             {
-                MessageBox.Show("Register demand:\n❀ The username most contains minimum 3 caracters \n❀ The password most contains minimum 5 caracters \n❀ Maximum caracters allowed on username or password is 20", "Registrering failed", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Changes saved! ✓");
+                MessageBox.Show("Register demand:\n✓ The username most contains minimum 3 caracters \n✓ The password most contains minimum 5 caracters \n✓ Maximum caracters allowed on username or password is 20", "Registrering failed", MessageBoxButton.OK, MessageBoxImage.Error);
                 txtUCpassword.Clear();
                 txtUpassword.Clear();
             }

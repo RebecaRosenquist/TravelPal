@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using TravelPal.Enums;
 
 namespace TravelPal.Travels
@@ -16,6 +17,7 @@ namespace TravelPal.Travels
             IsAllInclusive = isAllInclusive;
         }
 
+        //Har inte haft användning av denna?
         public string GetInfo()
         {
             return "";

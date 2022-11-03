@@ -38,10 +38,10 @@ namespace TravelPal
             travelManager = tManager;
             userManager = uManager;
 
-
             
         }
 
+        //Lägger in information i comboboxarna country/type/triptypes
         private void FeedComoBoxes()
         {
             cbxType.Items.Add("Vacation");
@@ -55,6 +55,7 @@ namespace TravelPal
 
         }
 
+        //Sparar tillagd resa om den uppfyller alla villkor
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
             if (txtDestination.Text != "" && txtTravlers.Text != "" && cbxCountry.SelectedItem != null && cbxType.SelectedItem != null)
@@ -122,6 +123,7 @@ namespace TravelPal
             
         }
 
+        //Reglerar vad som ska synas i UI beroende på om man valt trip eller vacation i comboboxen
         private void cbxType_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if(cbxType.SelectedItem.ToString() == "Vacation")
@@ -140,7 +142,6 @@ namespace TravelPal
                 chbAllInclusive.Visibility = Visibility.Hidden;
 
             }
-
 
         }
 

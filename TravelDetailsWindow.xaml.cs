@@ -67,7 +67,7 @@ namespace TravelPal
             }
 
         }
-
+        //Stänger Detailswindow så användaren kommer tillbaka till travelswindow
         private void btnCansel_Click(object sender, RoutedEventArgs e)
         {
 

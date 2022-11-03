@@ -119,8 +119,9 @@
                 VerticalAlignment="Stretch" 
                 VerticalContentAlignment="Center"
                 Foreground="#FF3A3A3A"
+            
                 Opacity="0.6"  >
-
+                
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>

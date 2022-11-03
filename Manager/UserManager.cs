@@ -15,7 +15,7 @@ namespace TravelPal.Manager
         public IUser SignedInUser { get; set; }
        
 
-        //Om användarnamn+lösen uppfyller kraven läggs usern till i listan users
+        //Kontroll om användarnamnet är tillgängligt (validateUsername) -> lägger till användare i listan
         public bool addUser(IUser user)
         {
             //Lägg till använndare i listan
@@ -26,14 +26,14 @@ namespace TravelPal.Manager
             }
             else
             {
-                MessageBox.Show("Oh no, the username is alredy taken. Please try again! ♡", "Username taken", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Oh no, the username is alredy taken. Please try again! ♡", "Username taken", MessageBoxButton.OK);
                 return false;
             }
 
         }
 
         
-
+        //Uppdaterar nya uppgifter på användaren (tillagda i userwindow)
         public bool updateUser(IUser user)
         {
             //Uppdatera användare i listan
@@ -62,8 +62,7 @@ namespace TravelPal.Manager
             return true;
         }
 
-        //Kontrollera om användarnamn och lösenord är en inlagd användare och isåfall logga in personen->skicka till travelwindow
-       //Om inte felmeddelande, cleara och be användaren skriva in uppgifter på nytt
+        //Kontrollera om användarnamn och lösenord är en användare från listan -> logga in personen->skicka till travelwindow
         public bool SignInUser(string username, string password)
         {
         
@@ -79,15 +78,16 @@ namespace TravelPal.Manager
             return  false;
         }
 
+        //Tar bort resa ifrån användarens lista samt listview (user+admin)
         public void RemoveTravelFromUser(Travel travelToRemove)
         {
-            //if signedInUser is User, remove travel directly from the users list
+            
             if (SignedInUser is User)
             {
                 User user = SignedInUser as User;
                 user.travels.Remove(travelToRemove);
             }
-            //if signedInUser is Admin, go through all users in list of users to see which travel matches the selected travel
+           
             else if (SignedInUser is Admin)
             {
                 for (int i = 0; i < users.Count; i++)

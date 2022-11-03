@@ -13,9 +13,11 @@ namespace TravelPal.Users
         public List<Travel> travels { get; set; } = new();
         public string UserName { get; set; }
         public string Password { get; set; }
+        public bool IsAdmin { get; set; } = false;
 
         public Countries Location { get; set; }
 
+        //deklarerar props
         public void IUser(string username, string password, Countries location)
         {
             UserName = username;
@@ -23,6 +25,7 @@ namespace TravelPal.Users
             Location = location;
         }
 
+        //hämtar listan med userns resor
         public List<Travel> GetTravels()
         {
             return travels;
@@ -31,5 +34,5 @@ namespace TravelPal.Users
 
     
 
-    //travels: List<Travel> användarnas listor av resor
+    
 }

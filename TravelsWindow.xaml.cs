@@ -22,8 +22,7 @@ namespace TravelPal
     /// </summary>
     public partial class TravelsWindow : Window
     {
-        //note to myself: Rad 23-32 lägger till listan som finns i TM i detta fönster så vi kommer åt den även här
-        //Listan är ej kopierad utan den är direktkopplad till originalet 
+        
 
         UserManager userManager;
         TravelManager travelManager;
@@ -40,19 +39,35 @@ namespace TravelPal
 
         }
         
-        //En metod som uppdaterar travellisten efter att en resa lagts till
+        //En metod som uppdaterar travellistan/listview efter att en resa lagts till
         public void UpdateTravelList()
         {
             
             lvTravelList.Items.Clear();
-            foreach(Travel travel in currentUser.GetTravels())
+            if(!currentUser.IsAdmin)
             {
-                ListViewItem newItem = new();
-                newItem.Content = travel.Country;
-                newItem.Tag = travel;
-                lvTravelList.Items.Add(newItem);
+                foreach(Travel travel in currentUser.GetTravels())
+                {
+                    ListViewItem newItem = new();
+                    newItem.Content = travel.Country;
+                    newItem.Tag = travel;
+                    lvTravelList.Items.Add(newItem);
 
+                }
             }
+            else if(currentUser.IsAdmin)
+            {
+                btnAddTravel.IsEnabled = false;
+                foreach(Travel travel in travelManager.Travels)
+                {
+
+                    ListViewItem newItem = new();
+                    newItem.Content = travel.Country;
+                    newItem.Tag = travel;
+                    lvTravelList.Items.Add(newItem);
+                }
+            }
+            
             
         }
 
@@ -70,7 +85,7 @@ namespace TravelPal
             this.Close();
         }
 
-        //Knapp som öppnar upp fönster UserDetailsWindow
+        //Öppnar upp fönster UserDetailsWindow
         private void btnUserDetails_Click(object sender, RoutedEventArgs e)
         {
             new UserDetailsWindow(userManager, this).Show();
@@ -78,19 +93,17 @@ namespace TravelPal
 
         } 
 
-        //Knapp som sparar informationen som usern fylllt i, i AddTravelWindow. Knapptryck genererar att resan sparas på userns inlogg samt öppnar upp travelwindow på nytt
-        private void btnAddTravel_Click(object sender, RoutedEventArgs e)
+        //Sparar informationen som usern fylllt i, i AddTravelWindow. Knapptryck genererar att resan sparas på userns inlogg samt öppnar upp travelwindow på nytt
+        public void btnAddTravel_Click(object sender, RoutedEventArgs e)
         {
-            
             
                 AddTravelWindow travelWindow = new(userManager, travelManager, currentUser);
                 travelWindow.Owner = this;
                 travelWindow.Show(); 
-           
-            
             
         }
 
+        //Tar bort vald resa 
         private void RemoveTravel_Click(object sender, RoutedEventArgs e)
         {
             if(lvTravelList.SelectedItem != null)
@@ -112,6 +125,7 @@ namespace TravelPal
 
         }
 
+        //Öppnar upp TravelDetailsWindow och visar valt resas information
         private void btnTravelDetails_Click(object sender, RoutedEventArgs e)
         {
             if(lvTravelList.SelectedItem != null)
@@ -131,6 +145,7 @@ namespace TravelPal
 
         }
 
+        //Uppdaterar labeln med username ifall ändringar gjorts
         public void UpdateUserNamePrint()
         {
             lblUsernamePrint.Content = $"{userManager.SignedInUser.UserName}";

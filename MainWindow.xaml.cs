@@ -42,11 +42,13 @@ namespace TravelPal
             user1.IUser("asd", "asd", Countries.Bahamas);
             userManager.addUser(user1);
 
-        }
+            
 
+        }
+        //Loggar in användaren om den uppfyller villkoren
         private void btnSingIn_Click(object sender, RoutedEventArgs e)
         {
-            //Kontrollerar om det finns någon text inskriven i rutorna för användarnamn och lösenord
+            
             if(txtUsername.Text == "" && txtPassword.Text == "")
             {
                 MessageBox.Show("The fields are empty.", "Logging in failed", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -57,7 +59,7 @@ namespace TravelPal
             }
             else
             {
-                //Användarnamnet och lösenordet är kontrollerat i metoden signInUser och om det är true så
+                
                 if(userManager.SignInUser(txtUsername.Text, txtPassword.Text))
                 {
                     new TravelsWindow(userManager, travelManager).Show();
@@ -65,16 +67,17 @@ namespace TravelPal
                     txtUsername.Clear();
                     this.Hide();
                 }
-                //Om användarnamnet eller lösenordet blev false i signInUser
+                
                 else
                 {
-                    //inloggning misslyckad
+                    
                     MessageBox.Show("The password or username is not a match", "Logging in failed", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
 
         }
 
+        //Skickar användaren till registerwindow
         private void btnRegister_Click(object sender, RoutedEventArgs e)
         {
             new RegisterWindow(userManager).Show();

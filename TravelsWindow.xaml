@@ -80,6 +80,7 @@
 
         <Button
                 Name="btnAddTravel"
+                IsEnabled="True"
                 Grid.Row="6"
                 Grid.Column="2"
                 Content="Add Travel"

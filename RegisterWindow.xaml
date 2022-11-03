@@ -88,7 +88,7 @@
                 VerticalAlignment="Stretch" 
                 VerticalContentAlignment="Center"
                 Foreground="#FF3A3A3A"
-                Opacity="0.6" TextChanged="txtRusername_TextChanged" >
+                Opacity="0.6" >
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -107,7 +107,7 @@
                 VerticalAlignment="Stretch" 
                 VerticalContentAlignment="Center"
                 Foreground="#FF3A3A3A"
-                Opacity="0.6" TextChanged="txtRusername_TextChanged" >
+                Opacity="0.6"  >
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -128,7 +128,7 @@
                 VerticalAlignment="Stretch" 
                 VerticalContentAlignment="Center"
                 Foreground="#FF3A3A3A"
-                Opacity="0.6" TextChanged="txtPassword_TextChanged" >
+                Opacity="0.6"  >
                 
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
@@ -168,7 +168,7 @@
                 Width="200"
                 Height="25"
                 Opacity="0.6"
-                Margin="0,0,0,10" SelectionChanged="cbRCountries_SelectionChanged"
+                Margin="0,0,0,10" 
                 VerticalAlignment="Stretch" 
                 VerticalContentAlignment="Center">
             <ComboBox.Resources>

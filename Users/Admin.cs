@@ -17,12 +17,13 @@ namespace TravelPal.Users
         public Countries Location { get; set; }
         public TravelManager travelManager { get; set; }
 
+        public bool IsAdmin { get; set; } = true;
         public Admin(TravelManager tManager)
         {
             travelManager = tManager;
         }
 
-        //
+        // Deklarerar props
         public void IUser(string username, string password, Countries location)
         {
             UserName = username;
@@ -30,7 +31,7 @@ namespace TravelPal.Users
             Location = location;
         }
 
-        // 
+        // Hämtar listan med alla resor till admin
         public List<Travel> GetTravels()
         {
             return travelManager.Travels;
