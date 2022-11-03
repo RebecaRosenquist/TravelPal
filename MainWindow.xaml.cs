@@ -41,6 +41,9 @@ namespace TravelPal
             Vacation vacation = new(true, "Växjö", Countries.Switzerland, 4);
             user.travels.Add(vacation);
             travelManager.AddTravel(vacation);
+            Trip trip = new(TripTypes.Work, "Paris", Countries.Bahamas, 4);
+            user.travels.Add(trip);
+            travelManager.AddTravel(trip);
 
             User user1 = new();
             user1.IUser("asd", "asd", Countries.Bahamas);

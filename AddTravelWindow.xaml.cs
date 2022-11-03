@@ -75,6 +75,8 @@ namespace TravelPal
                             Vacation vacation = new(isAllinclusive, destination, country, travlers);
                             travelManager.AddTravel(vacation);
                             currentUser.GetTravels().Add(vacation);
+
+                            this.Close();
                         }
                         else
                         {
@@ -84,6 +86,8 @@ namespace TravelPal
                                 Trip trip = new(tripType, destination, country, travlers);
                                 travelManager.AddTravel(trip);
                                 currentUser.GetTravels().Add(trip);
+
+                                this.Close();
                             }
                             else
                             {
@@ -118,9 +122,9 @@ namespace TravelPal
                 
             }
             ((TravelsWindow)this.Owner).UpdateTravelList();
-            this.Close();
-
             
+
+
         }
 
         //Reglerar vad som ska synas i UI beroende på om man valt trip eller vacation i comboboxen
